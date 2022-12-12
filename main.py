@@ -6,12 +6,12 @@ import xml.etree.ElementTree as ET
 def ruta():
     root = tk.Tk()
     root.withdraw()
-    ruta =  filedialog.askopenfilename(title='Cargar Archivo', filetypes = (("Text files", "*.xml*"), ("all files", "*.*")))
+    ruta =  filedialog.askopenfilename(title="Cargar Archivo", filetypes = (("Text files", "*.xml*"), ("all files", "*.*")))
     return ruta
 def Lector():
-    tree=ET.parse('jugadores.xml')
+    tree=ET.parse("jugadores.xml")
     root=tree.getroot()
-    print('\nTodos los atributos del Jugador: ')
+    print("\nTodos los atributos del Jugador: ")
     for elemento in root:#Elemento-Jugador
                 for elemento2 in elemento:
                     if elemento2.tag=="datospersonales":
@@ -53,11 +53,14 @@ def Menu():
         print(Fore.CYAN+"========================"+Fore.LIGHTWHITE_EX+"FESTTIVAL NAVIDEÑO"+Fore.CYAN+"===============================")
         print(Fore.CYAN+"====="+Fore.LIGHTYELLOW_EX+"Laboratorio Introducción a la Programación y Computación 2"+Fore.CYAN+"==========")
         print(Fore.CYAN+"====="+Fore.LIGHTBLUE_EX+"                            MENU                                "+Fore.CYAN+"====")
-        print(Fore.CYAN+"=="+Fore.RED+"1."+Fore.BLACK+" CARGAR ARCHIVO XML                                              "+Fore.CYAN+"====")
-        print(Fore.CYAN+"=="+Fore.RED+"2."+Fore.BLACK+" PROCESAR ARCHIVO                                                "+Fore.CYAN+"====")
-        print(Fore.CYAN+"=="+Fore.RED+"3."+Fore.BLACK+" BUSCAR PARTICIPANTE                                            "+Fore.CYAN+"     ====")
-        print(Fore.CYAN+"=="+Fore.RED+"4."+Fore.BLACK+" GENERAR REPORTE                                                        "+Fore.CYAN+"====")
-        print(Fore.CYAN+"=="+Fore.RED+"5."+Fore.BLACK+" SALIR                                                           "+Fore.CYAN+"====")
+        print(Fore.CYAN+"=="+Fore.RED+"1."+Fore.BLACK+" CARGAR ARCHIVO XML JUGADORES                                   "+Fore.CYAN+"====")
+        print(Fore.CYAN+"=="+Fore.RED+"2."+Fore.BLACK+" PROCESAR ARCHIVO JUGADORES                                               "+Fore.CYAN+"====")
+        print(Fore.CYAN+"=="+Fore.RED+"3."+Fore.BLACK+" BUSCAR JUGADOR                                            "+Fore.CYAN+"     ====")
+        print(Fore.CYAN+"=="+Fore.RED+"4."+Fore.BLACK+" GENERAR GRAFICAS                                                       "+Fore.CYAN+"====")
+        print(Fore.CYAN+"=="+Fore.RED+"5."+Fore.BLACK+" CARGAR ARCHIVO XML PREMIOS                                                      "+Fore.CYAN+"====")
+        print(Fore.CYAN+"=="+Fore.RED+"6."+Fore.BLACK+" PROCESAR ARCHIVO XML PREMIOS                                                          "+Fore.CYAN+"====")
+        print(Fore.CYAN+"=="+Fore.RED+"7."+Fore.BLACK+" MOSTRAR PILA PREMIOS                                                       "+Fore.CYAN+"====")
+        print(Fore.CYAN+"=="+Fore.RED+"8."+Fore.BLACK+" SALIR                                                      "+Fore.CYAN+"====")        
         print(Fore.LIGHTGREEN_EX+"=========================================================================")
         try:    
             opcion = int(input(Fore.LIGHTCYAN_EX+"== Elija una opción:==\n>"))
@@ -75,9 +78,7 @@ def Menu():
                 #LeerXmlEquisde(Ruta)
                 print("hola")
             elif opcion ==3 :
-                NombrePaciente = str(input(Fore.LIGHTBLACK_EX+"==Ingrese el Nombre del Paciente:==\n>"))
-                print("hola3")
-                #pacientito = ListaDePacientes.RetornarPaciente(NombrePaciente)
+                NombreJugador = str(input(Fore.LIGHTBLACK_EX+"==Ingrese el Nombre del Jugador:==\n>"))
             elif opcion == 4:
                 print("== SE GENERO CON EXITO SU REPORTE EN GRAPHIZ==")
             elif opcion == 5:
@@ -87,5 +88,5 @@ def Menu():
                 print(Fore.RED+"Por favor ingrese una opción Válida")
         except:
             print(Fore.RED+"Opción Invalida")
-Menu()
-#Lector()
+#Menu()
+Lector()
