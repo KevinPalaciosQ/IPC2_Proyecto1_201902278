@@ -35,6 +35,7 @@ class ListaSimple:
                 print("Su cantidad de Movimientos es: "+temporal.jugador.movimientos)
                 print("Su tamaño es : "+temporal.jugador.tamaño)
                 print("Su figura es : "+temporal.jugador.figura)
+            temporal = temporal.siguiente
     def RetornarJugador(self,nombre):
         temporal=self.cabeza
         while temporal!=None:

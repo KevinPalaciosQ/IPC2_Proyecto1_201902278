@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<premios>
+<premio>
+<lugar>10</lugar>
+<regalo>Cupones de Descuento</regalo >
+</premio >
+<premio>
+<lugar>9</lugar>
+<regalo >Oso de Peluche</regalo >
+</premio >
+<premio>
+<lugar>8</lugar>
+<regalo >Pachon hermetico</regalo >
+</premio >
+</premios>

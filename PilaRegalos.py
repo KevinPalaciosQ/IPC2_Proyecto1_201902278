@@ -3,8 +3,8 @@ class PilaRegalo():
     def __init__(self) :
         self.cima=None
         self.tamanio=0
-    def IngresarRegalo(self,regalo):
-        nuevo=NodoRegalo(regalo)
+    def IngresarRegalo(self,lugar,regalo):#se añadió regalo
+        nuevo=NodoRegalo(lugar,regalo)
         nuevo.abajo=self.cima#subiendo regalos
         self.cima=nuevo
         self.tamanio+=1
