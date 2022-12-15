@@ -1,0 +1,16 @@
+digraph G{
+
+rankdir=LR; 
+ node[shape=box, style=filled, color=skyblue, fontname="Century Gothic"]; 
+ graph [fontname="Century Gothic"]; 
+ labelloc="t"; label="Jugadores"; 
+0[label="Nombre: Kevin\nEdad: 25\nMovimientos: 36\nTamaño: 20\nFigura: arbol"];
+0->1;
+1[label="Nombre: Estuardo\nEdad: 25\nMovimientos: 36\nTamaño: 20\nFigura: arbol"];
+1->2;
+2[label="Nombre: Rodri\nEdad: 25\nMovimientos: 36\nTamaño: 20\nFigura: arbol"];
+2->3;
+3[label="Nombre: Rafa\nEdad: 25\nMovimientos: 36\nTamaño: 20\nFigura: arbol"];
+3->4;
+4[label="Nombre: Piter\nEdad: 25\nMovimientos: 36\nTamaño: 20\nFigura: arbol"];
+}

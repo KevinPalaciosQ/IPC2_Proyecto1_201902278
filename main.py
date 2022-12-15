@@ -114,13 +114,16 @@ def Menu():
                     print("")
             elif opcion==2:
                 LeerXml(Ruta)
+                ListaDeJugadores.CrearReporteLista()
             elif opcion ==3 :
                 NombreJugador = str(input(Fore.LIGHTBLACK_EX+"==Ingrese el Nombre del Jugador:==\n>"))
                 Jugadorcito=ListaDeJugadores.RetornarJugador(NombreJugador)
                 if Jugadorcito !=None:
                     ListaDeJugadores.MostrarJugador(NombreJugador)
+                    Menu()
                 else:
                     print(Fore.RED+"No se encontró Jugador")
+                    Menu()
             elif opcion == 4:
                 try:
                     Ruta2 = RutaR()
@@ -133,7 +136,10 @@ def Menu():
                     print("")
             elif opcion==5:
                 LeerXmlRegalo(Ruta2)
-            elif opcion == 6:
+                PilaRegalo.CrearReporteRegalo()
+            elif opcion==6:
+                print
+            elif opcion == 7:
                 print(Fore.BLUE+"Vuelva Pronto :)")
                 break
             else:

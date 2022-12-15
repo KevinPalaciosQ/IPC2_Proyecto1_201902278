@@ -1,6 +1,7 @@
 # Lista Simple de Jugador
 from NodoJugador import NodoJugador
 from Jugador import Jugador
+import os
 class ListaSimple:
     def __init__(self):
         self.cabeza=None
@@ -43,7 +44,36 @@ class ListaSimple:
                 return temporal.jugador.edad
             temporal=temporal.siguiente
         return None
+    def ReporteLista(self):
+        text=""
+        text+="rankdir=LR; \n "
+        text+="node[shape=box, style=filled, color=skyblue, fontname=\"Century Gothic\"]; \n "
+        text+="graph [fontname=\"Century Gothic\"]; \n "
+        text+="labelloc=\"t\"; label=\"Jugadores\"; \n"
+        contador=0
+        temporal=self.cabeza
+        #text+=str(contador)+"[label=\"Nombre: "+temporal.jugador.nombre+"\"];\n"
+        while temporal!=None:
+            text+=str(contador)+"[label=\"Nombre: "+temporal.jugador.nombre+"\\nEdad: "+temporal.jugador.edad+"\\nMovimientos: "+temporal.jugador.movimientos+"\\nTamaño: "+temporal.jugador.tamaño+"\\nFigura: "+temporal.jugador.figura+"\"];\n"
+            if temporal.siguiente!=None:
+                aux=contador+1
+                text+=str(contador)+"->"+str(aux)+";\n"
+            temporal=temporal.siguiente
+            contador+=1
+        text+="}"
+        return text
+    def CrearReporteLista(self):
+        try:
+            os.mkdir("Jugadores")
+        except:
+            pass
+        contenido="digraph G{\n\n"
+        r= open("Jugadores/reporte.dot","w",encoding="utf8")
+        contenido+=str(self.ReporteLista())
+        r.write(contenido)
+        r.close()
+        os.system("dot -Tpng Jugadores/reporte.dot -o Jugadores/reporte.png")
+        os.system("dot -Tpdf Jugadores/reporte.dot -o Jugadores/reporte.pdf")
+        os.startfile("Jugadores/reporte.png")
 
-
-
-
+        print("done")
