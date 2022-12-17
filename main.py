@@ -69,8 +69,7 @@ def LeerXmlRegalo(Ruta2):
                 elif element2.tag=="regalo":
                     regalo=element2.text
                     print("regalo: "+element2.text )
-            #Regalos.IngresarRegalo(lugar,regalo)
-        
+            Regalos.IngresarRegalo(lugar,regalo)        
 
 def ruta():
     root = tk.Tk()
@@ -88,17 +87,25 @@ def Menu():
     Ruta2=""
     while opcion !=3:
         print(Fore.LIGHTGREEN_EX+"=========================================================================")
-        print(Fore.CYAN+"========================"+Fore.LIGHTWHITE_EX+"FESTTIVAL NAVIDEÑO"+Fore.CYAN+"===============================")
+        print(Fore.CYAN+"======================"+Fore.YELLOW+"✰ "+Fore.LIGHTWHITE_EX+"FESTIVAL NAVIDEÑO"+Fore.YELLOW+"✰ "+Fore.CYAN+"==============================")
+        print(Fore.MAGENTA+"=========================================================================")
+        print(Fore.MAGENTA+"======= "+Fore.WHITE+"╚╣╠╝─╚╣╠╝─────────╗╬╔╬╔"+Fore.LIGHTYELLOW_EX+"  Feliz★* 。 • ˚ ˚ ˛ ˚ ˛ •"+Fore.MAGENTA+"         =======")
+        print(Fore.MAGENTA+"======= "+Fore.WHITE+"▄╬╬──▄╬╬───╔╗───╔▀▀▀▀▀║"+Fore.LIGHTYELLOW_EX+"•。★Navidad★ 。* 。"+Fore.MAGENTA+"                =======")
+        print(Fore.MAGENTA+"======= "+Fore.WHITE+"╚╗╠▄╬╚╗╠▄╬─╚╗─╔▀╝────╔╝"+Fore.LIGHTBLUE_EX+" ° 。 ° ˛˚˛ * _Π______*。*˚"+Fore.MAGENTA+"        =======")
+        print(Fore.MAGENTA+"======= "+Fore.WHITE+"─╠╦╦╬─╠╦╦╬══╬═╩╦═╦═╦═╬"+Fore.LIGHTBLUE_EX+"    ˚ ˛ •˛•˚ */______/~  ＼。˚ ˚ "+Fore.MAGENTA+"   =======")
+        print(Fore.MAGENTA+"======= "+Fore.WHITE+"─╝╝╝╝─╝╝╝╝─╘╧══╧═╧═╧═╧═╛"+Fore.LIGHTBLUE_EX+" ˚ ˛ •˛• ˚ ｜ 田田 ｜門｜ ˚"+Fore.MAGENTA+"       =======")
+        print(Fore.MAGENTA+"=========================================================================")
         print(Fore.CYAN+"====="+Fore.LIGHTYELLOW_EX+"Laboratorio Introducción a la Programación y Computación 2"+Fore.CYAN+"==========")
-        print(Fore.CYAN+"====="+Fore.LIGHTBLUE_EX+"                            MENU                                "+Fore.CYAN+"====")
-        print(Fore.CYAN+"=="+Fore.RED+"1."+Fore.BLACK+" CARGAR ARCHIVO XML JUGADORES                                   "+Fore.CYAN+"====")
-        print(Fore.CYAN+"=="+Fore.RED+"2."+Fore.BLACK+" PROCESAR ARCHIVO JUGADORES                                               "+Fore.CYAN+"====")
-        print(Fore.CYAN+"=="+Fore.RED+"3."+Fore.BLACK+" BUSCAR JUGADOR                                            "+Fore.CYAN+"     ====")
-        print(Fore.CYAN+"=="+Fore.RED+"4."+Fore.BLACK+" TOP 10 JUGADORES                                                    "+Fore.CYAN+"====")
-        print(Fore.CYAN+"=="+Fore.RED+"5."+Fore.BLACK+" CARGAR ARCHIVO XML PREMIOS                                                      "+Fore.CYAN+"====")
-        print(Fore.CYAN+"=="+Fore.RED+"6."+Fore.BLACK+" PROCESAR ARCHIVO XML PREMIOS                                                          "+Fore.CYAN+"====")
-        print(Fore.CYAN+"=="+Fore.RED+"7."+Fore.BLACK+" MOSTRAR PILA PREMIOS                                                       "+Fore.CYAN+"====")
-        print(Fore.CYAN+"=="+Fore.RED+"8."+Fore.BLACK+" SALIR                                                      "+Fore.CYAN+"====")        
+        print(Fore.LIGHTGREEN_EX+"=========================================================================")
+        print(Fore.CYAN+"====="+Fore.LIGHTMAGENTA_EX+" ඞ "+Fore.LIGHTCYAN_EX+" ඞ "+Fore.YELLOW+" ඞ "+Fore.LIGHTRED_EX+"                   MENU                     "+Fore.LIGHTMAGENTA_EX+" ඞ "+Fore.LIGHTCYAN_EX+" ඞ "+Fore.YELLOW+" ඞ  "+Fore.LIGHTRED_EX+Fore.CYAN+"=====")
+        print(Fore.CYAN+"=="+Fore.RED+"1."+Fore.BLACK+" CARGAR ARCHIVO XML JUGADORES                                   "+Fore.CYAN+ " ====")
+        print(Fore.CYAN+"=="+Fore.RED+"2."+Fore.BLACK+" PROCESAR ARCHIVO JUGADORES                                      "+Fore.CYAN+"====")
+        print(Fore.CYAN+"=="+Fore.RED+"3."+Fore.BLACK+" BUSCAR JUGADOR                                            "+Fore.CYAN+"      ====")
+        print(Fore.CYAN+"=="+Fore.RED+"4."+Fore.BLACK+" TOP 10 JUGADORES                                                "+Fore.CYAN+"====")
+        print(Fore.CYAN+"=="+Fore.RED+"5."+Fore.BLACK+" CARGAR ARCHIVO XML PREMIOS                                      "+Fore.CYAN+"====")
+        print(Fore.CYAN+"=="+Fore.RED+"6."+Fore.BLACK+" PROCESAR ARCHIVO XML PREMIOS                                    "+Fore.CYAN+"====")
+        print(Fore.CYAN+"=="+Fore.RED+"7."+Fore.BLACK+" MOSTRAR PILA PREMIOS                                            "+Fore.CYAN+"====")
+        print(Fore.CYAN+"=="+Fore.RED+"8."+Fore.BLACK+" SALIR                                                           "+Fore.CYAN+"====")        
         print(Fore.LIGHTGREEN_EX+"=========================================================================")
         try:    
             opcion = int(input(Fore.LIGHTCYAN_EX+"== Elija una opción:==\n>"))
@@ -125,6 +132,8 @@ def Menu():
                     print(Fore.RED+"No se encontró Jugador")
                     Menu()
             elif opcion == 4:
+                print("TOP 10 JUGADORES")
+            elif opcion == 5:
                 try:
                     Ruta2 = RutaR()
                     if Ruta2 !="":
@@ -134,16 +143,24 @@ def Menu():
                         print("== NO SE CARGÓ NINGUN ARCHIVO                     ==")
                 except:
                     print("")
-            elif opcion==5:
-                LeerXmlRegalo(Ruta2)
-                PilaRegalo.CrearReporteRegalo()
             elif opcion==6:
-                print
-            elif opcion == 7:
+                LeerXmlRegalo(Ruta2)
+                Regalos.CrearReporteRegalo()
+                Menu()
+            elif opcion==7:
+                print("Pila de premios Restante")
+            elif opcion == 8:
                 print(Fore.BLUE+"Vuelva Pronto :)")
+                print(Fore.WHITE+"════════════ ('\../') ═════════════")
+                print(Fore.WHITE+"════════════  (◕.◕) ═══════════════")
+                print(Fore.WHITE+"════════════ (,,)(,,) ═════════════")
+                print(Fore.BLUE+".▀█▀.█▄█.█▀█.█▄.█.█▄▀　█▄█.█▀█.█─█")
+                print(Fore.BLUE+"─.█.─█▀█.█▀█.█.▀█.█▀▄　─█.─█▄█.█▄█")
+                print(Fore.WHITE+"═══════════════════════════════════")
                 break
             else:
                 print(Fore.RED+"Por favor ingrese una opción Válida")
         except:
             print(Fore.RED+"Opción Invalida")
 Menu()
+

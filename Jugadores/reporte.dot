@@ -6,11 +6,11 @@ rankdir=LR;
  labelloc="t"; label="Jugadores"; 
 0[label="Nombre: Kevin\nEdad: 25\nMovimientos: 36\nTamaño: 20\nFigura: arbol"];
 0->1;
-1[label="Nombre: Estuardo\nEdad: 25\nMovimientos: 36\nTamaño: 20\nFigura: arbol"];
+1[label="Nombre: Lalo\nEdad: 23\nMovimientos: 30\nTamaño: 20\nFigura: arbol"];
 1->2;
-2[label="Nombre: Rodri\nEdad: 25\nMovimientos: 36\nTamaño: 20\nFigura: arbol"];
+2[label="Nombre: Rodri\nEdad: 21\nMovimientos: 31\nTamaño: 15\nFigura: arbol"];
 2->3;
-3[label="Nombre: Rafa\nEdad: 25\nMovimientos: 36\nTamaño: 20\nFigura: arbol"];
+3[label="Nombre: Rafa\nEdad: 22\nMovimientos: 36\nTamaño: 20\nFigura: arbol"];
 3->4;
-4[label="Nombre: Piter\nEdad: 25\nMovimientos: 36\nTamaño: 20\nFigura: arbol"];
+4[label="Nombre: Piter\nEdad: 23\nMovimientos: 36\nTamaño: 5\nFigura: arbol"];
 }

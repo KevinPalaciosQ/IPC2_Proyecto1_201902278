@@ -2,6 +2,7 @@
 from NodoJugador import NodoJugador
 from Jugador import Jugador
 import os
+from colorama import Fore
 class ListaSimple:
     def __init__(self):
         self.cabeza=None
@@ -30,12 +31,13 @@ class ListaSimple:
         temporal=self.cabeza
         while temporal != None:
             if (temporal.jugador.nombre==nombre):
-                print("****JUGADORES****")
-                print("Su nombre es: "+temporal.jugador.nombre)
-                print("Su edad es: "+temporal.jugador.edad)
-                print("Su cantidad de Movimientos es: "+temporal.jugador.movimientos)
-                print("Su tamaño es : "+temporal.jugador.tamaño)
-                print("Su figura es : "+temporal.jugador.figura)
+                print(Fore.LIGHTBLACK_EX+"=============================="+Fore.YELLOW+" ඞ JUGADOR ඞ "+Fore.LIGHTBLACK_EX+"==============================")
+                print("==Su nombre es: "+temporal.jugador.nombre)
+                print("==Su edad es: "+temporal.jugador.edad)
+                print("==Su cantidad de Movimientos es: "+temporal.jugador.movimientos)
+                print("==Su tamaño es : "+temporal.jugador.tamaño)
+                print("==Su figura es : "+temporal.jugador.figura)
+                print(Fore.LIGHTBLACK_EX+"=========================================================================")
             temporal = temporal.siguiente
     def RetornarJugador(self,nombre):
         temporal=self.cabeza
@@ -77,3 +79,5 @@ class ListaSimple:
         os.startfile("Jugadores/reporte.png")
 
         print("done")
+    def Top10Jugadores():
+        pass

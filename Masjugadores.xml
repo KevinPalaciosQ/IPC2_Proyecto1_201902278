@@ -35,10 +35,10 @@
     </jugador>
     <jugador>
         <datospersonales>
-            <nombre>Estuardo</nombre>
-            <edad>25</edad>
+            <nombre>Lalo</nombre>
+            <edad>23</edad>
         </datospersonales>
-        <movimientos>36</movimientos>
+        <movimientos>30</movimientos>
         <tamaño>20</tamaño>
         <figura>arbol</figura>
         <puzzle>
@@ -69,10 +69,10 @@
     <jugador>
         <datospersonales>
             <nombre>Rodri</nombre>
-            <edad>25</edad>
+            <edad>21</edad>
         </datospersonales>
-        <movimientos>36</movimientos>
-        <tamaño>20</tamaño>
+        <movimientos>31</movimientos>
+        <tamaño>15</tamaño>
         <figura>arbol</figura>
         <puzzle>
             <celda f="1" c="0" />
@@ -102,7 +102,7 @@
     <jugador>
         <datospersonales>
             <nombre>Rafa</nombre>
-            <edad>25</edad>
+            <edad>22</edad>
         </datospersonales>
         <movimientos>36</movimientos>
         <tamaño>20</tamaño>
@@ -135,10 +135,10 @@
     <jugador>
         <datospersonales>
             <nombre>Piter</nombre>
-            <edad>25</edad>
+            <edad>23</edad>
         </datospersonales>
         <movimientos>36</movimientos>
-        <tamaño>20</tamaño>
+        <tamaño>5</tamaño>
         <figura>arbol</figura>
         <puzzle>
             <celda f="1" c="0" />
