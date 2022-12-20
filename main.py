@@ -7,6 +7,7 @@ from PilaRegalos import *
 #OBTENER LA RUTA DEL ARCHIVO
 ListaDeJugadores=ListaSimple()
 Regalos=PilaRegalo()
+ListaDeTop10=ListaSimple()
 def LeerXml(Ruta):
     global ListaSimple
     nombre = ""
@@ -14,6 +15,7 @@ def LeerXml(Ruta):
     movimientos = ""
     tamaño = ""
     figura = ""
+    punteo=0
     if Ruta !="":
         Archivo=ET.parse(Ruta)
         root=Archivo.getroot()
@@ -30,14 +32,36 @@ def LeerXml(Ruta):
                                     print("edad: "+elemento3.text )
                         elif elemento2.tag=="movimientos":
                             movimientos=elemento2.text
+                            if int(movimientos)<5:
+                                punteo+=100
+                            elif int(movimientos)>5 and int(movimientos)<10:
+                                punteo+=75
+                            elif int(movimientos)>10 and int(movimientos)<15:
+                                punteo+=50
+                            elif int(movimientos)>15 and int(movimientos)<20:
+                                punteo+=25
+                            elif int(movimientos)>20 and int(movimientos)<25:
+                                punteo+=20
+                            elif int(movimientos)>=10000:
+                                print("Usted alcanzó el Límite de Movimientos")
+                            print(str(punteo))
                             print("movimientos: "+elemento2.text )
                         elif elemento2.tag=="tamaño":
                             tamaño=elemento2.text
+                            if int(tamaño)>=30:
+                                print("Usted alcanzó el máximo del tamaño")
                             print("tamaño: "+elemento2.text )
                         elif elemento2.tag=="figura":
                             figura=elemento2.text
+                            if str(figura)=="estrella de Belén":
+                                punteo+=500
+                            elif str(figura)=="Árbol de Navidad":
+                                punteo+=250
+                            elif str(figura)=="Regalo":
+                                punteo+=100
                             print("figura: "+elemento2.text )
                     ListaDeJugadores.InsertarJugador(nombre,edad,movimientos,tamaño,figura)
+                    #insertar jugador y puntaje 
                     for elemento2 in elemento:
                         if elemento2.tag=="puzzle":   
                             print("----------------------------Puzzle----------------------------")
@@ -127,12 +151,18 @@ def Menu():
                 Jugadorcito=ListaDeJugadores.RetornarJugador(NombreJugador)
                 if Jugadorcito !=None:
                     ListaDeJugadores.MostrarJugador(NombreJugador)
+                    ListaDeJugadores.SacarJugador()
+                    ListaDeJugadores.CrearReporteListaActualizado()
+                    #ListaDeJugadores.CrearReporteLista()
+                    #print(ListaDeJugadores)
                     Menu()
                 else:
                     print(Fore.RED+"No se encontró Jugador")
                     Menu()
             elif opcion == 4:
+                global ListaSimple
                 print("TOP 10 JUGADORES")
+                
             elif opcion == 5:
                 try:
                     Ruta2 = RutaR()

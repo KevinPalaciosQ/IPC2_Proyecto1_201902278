@@ -1,5 +1,7 @@
 digraph G{
 
-1->2;
-2[label="Lugar: 10\nRegalo: Cupones de Descuento"];
+rankdir=LR; 
+ node[shape=Mrecord]; 
+ graph [fontname="Century Gothic"]; 
+ Pila[style="filled" ,label="Pachon hermetico|Oso de Peluche|Cupones de Descuento"];
 }

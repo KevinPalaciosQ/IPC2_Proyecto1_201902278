@@ -19,20 +19,18 @@ class PilaRegalo():
     def GraficarRegalos(self):
         text=""
         text+="rankdir=LR; \n "
-        text+="node[shape=box, style=filled, color=skyblue, fontname=\"Century Gothic\"]; \n "
+        text+="node[shape=Mrecord]; \n "
         text+="graph [fontname=\"Century Gothic\"]; \n "
-        text+="labelloc=\"t\"; label=\"Regalos\"; \n"
-        contador=0
+        text+="Pila[style=\"filled\" ,label=\""
         temporal=self.cima
         while temporal!=None:
-            text+=str(contador)+"[label=\"Lugar: "+temporal.lugar+"\\nRegalo: "+temporal.regalo+"\"];\n"
-            #if temporal.abajo!=None:
-            if temporal.abajo!=None:
-                aux=contador+1
-                text=str(contador)+"->"+str(aux)+";\n"
-            temporal=temporal.abajo
-            contador+=1
-        text+="}"
+            if temporal.abajo==None:
+                text+=temporal.regalo
+                temporal=temporal.abajo
+            else:
+                text+=temporal.regalo +"|"
+                temporal=temporal.abajo
+        text+="\"];\n}"
         return text
 
 
@@ -44,6 +42,7 @@ class PilaRegalo():
         contenido="digraph G{\n\n"
         r= open("Regalos/reporte.dot","w",encoding="utf8")
         contenido+=str(self.GraficarRegalos())
+        print(contenido)
         r.write(contenido)
         r.close()
         os.system("dot -Tpng Regalos/reporte.dot -o Regalos/reporte.png")

@@ -59,7 +59,7 @@ class ListaSimple:
             text+=str(contador)+"[label=\"Nombre: "+temporal.jugador.nombre+"\\nEdad: "+temporal.jugador.edad+"\\nMovimientos: "+temporal.jugador.movimientos+"\\nTamaño: "+temporal.jugador.tamaño+"\\nFigura: "+temporal.jugador.figura+"\"];\n"
             if temporal.siguiente!=None:
                 aux=contador+1
-                text+=str(contador)+"->"+str(aux)+";\n"
+                text+=str(contador)+"->"+str(aux)+"[dir=back];\n"
             temporal=temporal.siguiente
             contador+=1
         text+="}"
@@ -79,5 +79,39 @@ class ListaSimple:
         os.startfile("Jugadores/reporte.png")
 
         print("done")
+    def ReporteListaActualizado(self):
+        text=""
+        text+="rankdir=LR; \n "
+        text+="node[shape=box, style=filled, color=skyblue, fontname=\"Century Gothic\"]; \n "
+        text+="graph [fontname=\"Century Gothic\"]; \n "
+        text+="labelloc=\"t\"; label=\"Jugadores Actualizados\"; \n"
+        contador=0
+        temporal=self.cabeza
+        #text+=str(contador)+"[label=\"Nombre: "+temporal.jugador.nombre+"\"];\n"
+        while temporal!=None:
+            text+=str(contador)+"[label=\"Nombre: "+temporal.jugador.nombre+"\\nEdad: "+temporal.jugador.edad+"\\nMovimientos: "+temporal.jugador.movimientos+"\\nTamaño: "+temporal.jugador.tamaño+"\\nFigura: "+temporal.jugador.figura+"\"];\n"
+            if temporal.siguiente!=None:
+                aux=contador+1
+                text+=str(contador)+"->"+str(aux)+"[dir=back];\n"
+            temporal=temporal.siguiente
+            contador+=1
+        text+="}"
+        return text
+    def CrearReporteListaActualizado(self):
+        try:
+            os.mkdir("Jugadores")
+        except:
+            pass
+        contenido="digraph G{\n\n"
+        r= open("Jugadores/reporteactualizado.dot","w",encoding="utf8")
+        contenido+=str(self.ReporteListaActualizado())
+        r.write(contenido)
+        r.close()
+        os.system("dot -Tpng Jugadores/reporteactualizado.dot -o Jugadores/reporteactualizado.png")
+        os.system("dot -Tpdf Jugadores/reporteactualizado.dot -o Jugadores/reporteactualizado.pdf")
+        os.startfile("Jugadores/reporteactualizado.png")
+
+        print("done")
     def Top10Jugadores():
+        print("Top 10 Jugadores")
         pass
