@@ -4,7 +4,7 @@ rankdir=LR;
  node[shape=box, style=filled, color=skyblue, fontname="Century Gothic"]; 
  graph [fontname="Century Gothic"]; 
  labelloc="t"; label="Jugadores"; 
-0[label="Nombre: Kevin\nEdad: 25\nMovimientos: 36\nTamaño: 20\nFigura: arbol"];
+0[label="Nombre: Kevin\nEdad: 25\nMovimientos: 16\nTamaño: 20\nFigura: Árbol de Navidad"];
 0->1[dir=back];
 1[label="Nombre: Lalo\nEdad: 23\nMovimientos: 30\nTamaño: 20\nFigura: arbol"];
 1->2[dir=back];

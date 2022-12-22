@@ -4,10 +4,13 @@ from colorama import init, Fore, Back, Style
 import xml.etree.ElementTree as ET
 from ListaJugador import *
 from PilaRegalos import *
+from ListaDoble import *
+from MatrizDispersa import *
 #OBTENER LA RUTA DEL ARCHIVO
 ListaDeJugadores=ListaSimple()
 Regalos=PilaRegalo()
-ListaDeTop10=ListaSimple()
+ListaDeTop10=ListaDoble()
+matriz=MatrizDispersa()
 def LeerXml(Ruta):
     global ListaSimple
     nombre = ""
@@ -15,7 +18,10 @@ def LeerXml(Ruta):
     movimientos = ""
     tamaño = ""
     figura = ""
-    punteo=0
+    pos_x="f"
+    pos_y="c"
+    caracter=""
+    #punteo=0
     if Ruta !="":
         Archivo=ET.parse(Ruta)
         root=Archivo.getroot()
@@ -31,6 +37,7 @@ def LeerXml(Ruta):
                                     edad=elemento3.text
                                     print("edad: "+elemento3.text )
                         elif elemento2.tag=="movimientos":
+                            punteo=0
                             movimientos=elemento2.text
                             if int(movimientos)<5:
                                 punteo+=100
@@ -40,16 +47,35 @@ def LeerXml(Ruta):
                                 punteo+=50
                             elif int(movimientos)>15 and int(movimientos)<20:
                                 punteo+=25
-                            elif int(movimientos)>20 and int(movimientos)<25:
-                                punteo+=20
+                            elif int(movimientos)>20 and int(movimientos)<9999:
+                                print("Usted ya no obtiene puntos por movimientos")
                             elif int(movimientos)>=10000:
                                 print("Usted alcanzó el Límite de Movimientos")
-                            print(str(punteo))
+                            print("Su punteo por movimientos es: "+str(punteo))
                             print("movimientos: "+elemento2.text )
                         elif elemento2.tag=="tamaño":
                             tamaño=elemento2.text
-                            if int(tamaño)>=30:
+                            if int(tamaño)==5:
+                                punteo+=25
+                                print("Tamaño Aceptado")
+                            elif int(tamaño)==10:
+                                punteo+=50
+                                print("Tamaño Aceptado")
+                            elif int(tamaño)==15:
+                                punteo+=75
+                                print("Tamaño Aceptado")
+                            elif int(tamaño)==20:
+                                punteo+=100
+                                print("Tamaño Aceptado")
+                            elif int(tamaño)==25:
+                                punteo+=125
+                                print("Tamaño Aceptado")
+                            elif int(tamaño)==30:
+                                punteo+=150
+                                print("Tamaño Aceptado")    
+                            elif int(tamaño)>30:
                                 print("Usted alcanzó el máximo del tamaño")
+                            print("Su punteo por Tamaño es: "+str(punteo))
                             print("tamaño: "+elemento2.text )
                         elif elemento2.tag=="figura":
                             figura=elemento2.text
@@ -60,16 +86,20 @@ def LeerXml(Ruta):
                             elif str(figura)=="Regalo":
                                 punteo+=100
                             print("figura: "+elemento2.text )
+                            print("Su punteo total es: "+str(punteo))
                     ListaDeJugadores.InsertarJugador(nombre,edad,movimientos,tamaño,figura)
-                    #insertar jugador y puntaje 
+                    ListaDeTop10.insertar(nombre,punteo)
+                    ListaDeTop10.BubbleSort()
                     for elemento2 in elemento:
                         if elemento2.tag=="puzzle":   
-                            print("----------------------------Puzzle----------------------------")
+                            print("----------------------------Puzzle Desordenado----------------------------")
                             for elemento3 in elemento2:
                                 if elemento3.tag=="celda":
                                     print("fila :"+elemento3.attrib.get("f"))
                                     print("columna :"+elemento3.attrib.get("c"))
-                            print("----------------------------Solucion----------------------------")
+                                    #matriz.insertar(elemento3.attrib.get("f"), elemento3.attrib.get("c"), caracter)
+                                    #matriz.graficarDesorden()
+                            print("----------------------------Puzzle Ordenado----------------------------")
                     for elemento2 in elemento:
                         if elemento2.tag=="solucion":   
                             for elemento3 in elemento2:
@@ -78,7 +108,6 @@ def LeerXml(Ruta):
                                     print("columna :"+elemento3.attrib.get("c"))
 def LeerXmlRegalo(Ruta2):
     global PilaRegalo
-    #Regalos.IngresarRegalo("Guatemala","dinero")
     lugar=""
     regalo=""
     if Ruta2 !="":
@@ -128,7 +157,7 @@ def Menu():
         print(Fore.CYAN+"=="+Fore.RED+"4."+Fore.BLACK+" TOP 10 JUGADORES                                                "+Fore.CYAN+"====")
         print(Fore.CYAN+"=="+Fore.RED+"5."+Fore.BLACK+" CARGAR ARCHIVO XML PREMIOS                                      "+Fore.CYAN+"====")
         print(Fore.CYAN+"=="+Fore.RED+"6."+Fore.BLACK+" PROCESAR ARCHIVO XML PREMIOS                                    "+Fore.CYAN+"====")
-        print(Fore.CYAN+"=="+Fore.RED+"7."+Fore.BLACK+" MOSTRAR PILA PREMIOS                                            "+Fore.CYAN+"====")
+        print(Fore.CYAN+"=="+Fore.RED+"7."+Fore.BLACK+" ENTREGA DE PREMIOS                                            "+Fore.CYAN+"  ====")
         print(Fore.CYAN+"=="+Fore.RED+"8."+Fore.BLACK+" SALIR                                                           "+Fore.CYAN+"====")        
         print(Fore.LIGHTGREEN_EX+"=========================================================================")
         try:    
@@ -152,17 +181,17 @@ def Menu():
                 if Jugadorcito !=None:
                     ListaDeJugadores.MostrarJugador(NombreJugador)
                     ListaDeJugadores.SacarJugador()
-                    ListaDeJugadores.CrearReporteListaActualizado()
-                    #ListaDeJugadores.CrearReporteLista()
-                    #print(ListaDeJugadores)
+                    #ListaDeJugadores.CrearReporteListaActualizado() 
                     Menu()
                 else:
                     print(Fore.RED+"No se encontró Jugador")
                     Menu()
             elif opcion == 4:
-                global ListaSimple
-                print("TOP 10 JUGADORES")
-                
+                print("")
+                print(Fore.LIGHTWHITE_EX+"=========================================================================")
+                print(Fore.LIGHTWHITE_EX+"===                      "+Fore.RED+"TOP 10 JUGADORES  "+Fore.LIGHTWHITE_EX+"                           ===")
+                print(Fore.LIGHTWHITE_EX+"=========================================================================")
+                ListaDeTop10.mostrarPuntos()
             elif opcion == 5:
                 try:
                     Ruta2 = RutaR()
@@ -178,7 +207,12 @@ def Menu():
                 Regalos.CrearReporteRegalo()
                 Menu()
             elif opcion==7:
-                print("Pila de premios Restante")
+                print("Entrega de Premios")
+                print(Fore.LIGHTWHITE_EX+"=========================================================================")
+                print(Fore.LIGHTWHITE_EX+"===                       "+Fore.RED+"ENTREGA DE PREMIOS"+Fore.LIGHTWHITE_EX+"                          ===")
+                print(Fore.LIGHTWHITE_EX+"=========================================================================")
+                print("Para consultar la entrega por favor vaya a top 10 y consulte la carpeta")
+                print("de premios ⛄")
             elif opcion == 8:
                 print(Fore.BLUE+"Vuelva Pronto :)")
                 print(Fore.WHITE+"════════════ ('\../') ═════════════")

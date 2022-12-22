@@ -11,19 +11,17 @@ class Lista_Cabecera:
             self.primero = nuevo
             self.ultimo = nuevo
         else:
-            # ---- Insercion en ORDEN
-            # -- verificamos si el nuevo es menor que el primero
+            
             if nuevo.id < self.primero.id:
                 nuevo.siguiente = self.primero
                 self.primero.anterior = nuevo
                 self.primero = nuevo
-            # -- verificamos si el nuevo es mayor que el ultimo
+            
             elif nuevo.id > self.ultimo.id:
                 self.ultimo.siguiente = nuevo
                 nuevo.anterior = self.ultimo
                 self.ultimo = nuevo
             else:
-                # -- sino, recorremos la lista para buscar donde acomodarnos, entre el primero y el ultimo
                 tmp: Nodo_Cabecera = self.primero 
                 while tmp != None:
                     if nuevo.id < tmp.id:
@@ -40,11 +38,11 @@ class Lista_Cabecera:
     def mostrarCabeceras(self):
         tmp = self.primero
         while tmp != None:
-            print('Cabecera', self.tipo, tmp.id)
+            print("Coordenada", self.tipo, tmp.id)
             tmp = tmp.siguiente
             
 
-    def getCabecera(self, id) -> Nodo_Cabecera: #esta funcion debe retornar un nodo cabecera
+    def getCabecera(self, id) -> Nodo_Cabecera: 
         tmp = self.primero
         while tmp != None:
             if id == tmp.id:
